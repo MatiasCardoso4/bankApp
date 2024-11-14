@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bank app</title>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <img src="./images/logo-transparent-svg.svg" alt="logo image" />
+      </header>
+      <section class="form-section">
+        <form novalidate>
+          <div class="user-name-container">
+            <label for="user">user name</label>
+            <input
+              class="user-name"
+              id="user"
+              type="text"
+              autocomplete="off"
+              required
+            />
+          </div>
+
+          <button class="login-btn">Login</button>
+        </form>
+      </section>
+
+      <template class="user-info">
+        <form class="amount-user">
+          <input type="text" id="amount" />
+        </form>
+        <table>
+          <thead>
+            <tr>
+              <th>Account number</th>
+              <th>Account name</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="user-number-account"></td>
+              <td id="user-name"></td>
+              <td id="user-balance"></td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
