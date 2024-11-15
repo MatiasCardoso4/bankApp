@@ -4,9 +4,8 @@ const loginBtn = document.querySelector("login-btn");
 const container = document.querySelector(".container");
 
 let user = "";
-let amount = 0;
-let userInfo = [{ userName: user, balance: 0, acountNumber: 1213526500 }];
-console.log(userInfo[0].userName);
+// let amount = 0;
+let userInfo = [];
 
 input.addEventListener("input", (e) => {
   user = e.target.value;
@@ -15,9 +14,14 @@ input.addEventListener("input", (e) => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   checkInput();
+  handleUser();
+  updateTable();
+  console.log(userInfo);
 });
 
-function handleUser() {}
+function handleUser() {
+  userInfo.push({ userName: user, accountNumber: 1, balance: 0 });
+}
 
 function checkInput() {
   if (input.validity.valueMissing) {
@@ -32,10 +36,10 @@ function checkInput() {
 //*************************************\\
 const template = document.querySelector("template");
 const clone = document.importNode(template.content, true);
-const userName = clone.getElementById("user-name");
-const accountNumber = clone.getElementById("user-number-account");
-const amountTemplate = clone.getElementById("user-balance");
-const formTemplate = clone.querySelector(".amount-user");
+const userName = clone.getElementById("account-name");
+const accountNumber = clone.getElementById("account-number");
+const userBalance = clone.getElementById("account-balance");
+const formTemplate = clone.querySelector(".template-form");
 const inputAmount = clone.getElementById("amount");
 //*************************************\\
 
@@ -50,20 +54,23 @@ function redirect() {
 
   container.textContent = "";
   container.append(clone);
-  updateTable();
 }
 
 function updateTable() {
   userInfo.forEach((user) => {
     userName.textContent = user.userName;
-    accountNumber.textContent = user.acountNumber;
-    amountTemplate.textContent = user.balance;
+    accountNumber.textContent = user.accountNumber;
+    userBalance.textContent = user.balance;
   });
 }
 
-function updateUserName() {
-  userInfo = userInfo.map((user) => {
-    user.userName = user;
-  });
-  updateTable();
-}
+// function updateUserName() {
+//   const ifExists = userInfo.some((u) => u.acountNumber === user.acountNumber);
+//   if (!ifExists) {
+//     userInfo = userInfo.forEach((user) => {
+//       user.userName = user;
+//     });
+//   }
+
+//   updateTable();
+// }

@@ -12,7 +12,7 @@
         <img src="./images/logo-transparent-svg.svg" alt="logo image" />
       </header>
       <section class="form-section">
-        <form novalidate>
+        <form class="login-form" novalidate>
           <div class="user-name-container">
             <label for="user">user name</label>
             <input
@@ -29,7 +29,11 @@
       </section>
 
       <template class="user-info">
-        <form class="amount-user">
+        <header>
+          <img src="./images/logo-transparent-svg.svg" alt="logo image" />
+          <p id="user"></p>
+        </header>
+        <form class="template-form">
           <input type="text" id="amount" />
         </form>
         <table>
@@ -42,9 +46,9 @@
           </thead>
           <tbody>
             <tr>
-              <td id="user-number-account"></td>
-              <td id="user-name"></td>
-              <td id="user-balance"></td>
+              <td id="account-number"></td>
+              <td id="account-name"></td>
+              <td id="account-balance"></td>
             </tr>
           </tbody>
         </table>
