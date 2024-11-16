@@ -2,9 +2,12 @@ const form = document.querySelector("form");
 const input = document.querySelector(".user-name");
 const loginBtn = document.querySelector("login-btn");
 const container = document.querySelector(".container");
+const main = document.querySelector(".main-section");
 
 let user = "";
-// let amount = 0;
+const savedUser = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
+  : [];
 let userInfo = [];
 
 input.addEventListener("input", (e) => {
@@ -14,13 +17,19 @@ input.addEventListener("input", (e) => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   checkInput();
-  handleUser();
-  updateTable();
+  createUser(userInfo);
+  showTable();
+
   console.log(userInfo);
 });
 
-function handleUser() {
-  userInfo.push({ userName: user, accountNumber: 1, balance: 0 });
+function createUser(user) {
+  const ifExists = savedUser.some((user) => user.id === user.id);
+  if (!ifExists) {
+    savedUser.push({ userName: user, accountNumber: 1, balance: 0 });
+  }
+
+  localStorage.setItem("user", JSON.stringify(userInfo));
 }
 
 function checkInput() {
@@ -41,6 +50,8 @@ const accountNumber = clone.getElementById("account-number");
 const userBalance = clone.getElementById("account-balance");
 const formTemplate = clone.querySelector(".template-form");
 const inputAmount = clone.getElementById("amount");
+const logoutBtn = clone.querySelector(".logout-btn");
+const a = clone.querySelector("a");
 //*************************************\\
 
 function redirect() {
@@ -48,29 +59,31 @@ function redirect() {
     e.preventDefault();
   });
 
-  // inputAmount.addEventListener("input", (e) => {
-  //   updateUserInfo(amount);
-  // });
-
   container.textContent = "";
-  container.append(clone);
+  container.appendChild(clone);
 }
 
-function updateTable() {
-  userInfo.forEach((user) => {
+function showTable() {
+  savedUser.forEach((user) => {
     userName.textContent = user.userName;
     accountNumber.textContent = user.accountNumber;
     userBalance.textContent = user.balance;
   });
 }
 
-// function updateUserName() {
-//   const ifExists = userInfo.some((u) => u.acountNumber === user.acountNumber);
-//   if (!ifExists) {
-//     userInfo = userInfo.forEach((user) => {
-//       user.userName = user;
-//     });
-//   }
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTemplate = localStorage.getItem("templateContent");
 
-//   updateTable();
-// }
+  if (savedTemplate) {
+    redirect();
+    showTable();
+  } else {
+    container.append(main);
+  }
+  localStorage.setItem("templateContent", clone);
+});
+
+logoutBtn.addEventListener("click", () => {
+  a.href = "./index.html";
+  localStorage.removeItem("templateContent");
+});

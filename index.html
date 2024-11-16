@@ -8,30 +8,39 @@
   </head>
   <body>
     <main class="container">
-      <header>
-        <img src="./images/logo-transparent-svg.svg" alt="logo image" />
-      </header>
-      <section class="form-section">
-        <form class="login-form" novalidate>
-          <div class="user-name-container">
-            <label for="user">user name</label>
-            <input
-              class="user-name"
-              id="user"
-              type="text"
-              autocomplete="off"
-              required
-            />
-          </div>
+      <section class="main-section">
+        <header>
+          <img
+            class="logo"
+            src="./images/logo-transparent-svg.svg"
+            alt="logo image"
+          />
+        </header>
+        <section class="form-section">
+          <form class="login-form" novalidate>
+            <div class="user-name-container">
+              <label for="user">user name</label>
+              <input
+                class="user-name"
+                id="user"
+                type="text"
+                autocomplete="off"
+                required
+              />
+            </div>
 
-          <button class="login-btn">Login</button>
-        </form>
+            <button class="login-btn">Login</button>
+          </form>
+        </section>
       </section>
 
       <template class="user-info">
         <header>
           <img src="./images/logo-transparent-svg.svg" alt="logo image" />
           <p id="user"></p>
+          <button class="logout-btn">
+            <a>logout</a>
+          </button>
         </header>
         <form class="template-form">
           <input type="text" id="amount" />
