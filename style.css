@@ -111,10 +111,43 @@ body {
 }
 
 table {
+  table-layout: fixed;
+  width: 33%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #1e90ff;
+  color: white;
+}
+
+thead th:nth-child(1),
+thead th:nth-child(2),
+thead th:nth-child(3) {
+  width: 33%;
+}
+
+tbody td {
+  text-align: center;
+  background-color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+tbody td:nth-child(1),
+tbody td:nth-child(2) {
+  border-right: 1px solid black;
+}
+
+th,
+td {
+  padding: 20px;
+}
+
+/* table {
   color: white;
   text-align: center;
   width: 500px;
-
   margin: auto;
   margin-top: 200px;
   border: 1px solid #f2f2f2;
@@ -135,4 +168,4 @@ tbody {
 
 td {
   height: 30px;
-}
+} */
